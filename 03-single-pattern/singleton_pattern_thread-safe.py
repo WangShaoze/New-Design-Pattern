@@ -23,12 +23,22 @@ class Singleton:
         return cls.__instance
 
 
+class Number(Singleton):
+    def __init__(self, a):
+        self.a = a
+
+    def __str__(self):
+        return str("实例内存地址:{}, 实例的属性a:{}".format(id(self), self.a))
+
+
 if __name__ == '__main__':
 
     # 多线程测试示例
     def test_singleton(num: int):
-        s = Singleton()
-        print("线程{}:{}".format(num, id(s)))
+        s = Number(num)
+
+        print("线程{}:{}, Number instance:{}".format(num, id(s), s))
+
 
     threads = [threading.Thread(target=test_singleton, args=(u,)) for u in range(160)]
     for t in threads:

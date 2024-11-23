@@ -14,6 +14,14 @@ class Singleton:
         return cls.__instance
 
 
+class Number(Singleton):
+    def __init__(self, a):
+        self.a = a
+
+    def __str__(self):
+        return str("实例内存地址:{}, 实例的属性a:{}".format(id(self), self.a))
+
+
 """
 这里的 __instance 初始化为 None，当第一次调用 Singleton 类来创建实例时，发现 __instance 是 None，
 就会创建一个新的实例并赋值给它，后续再调用创建实例时，就直接返回已经存在的这个实例了。
@@ -22,7 +30,12 @@ class Singleton:
 """
 
 if __name__ == '__main__':
-    # 使用示例
-    s1 = Singleton()
-    s2 = Singleton()
-    print(s1 is s2)  # 正常情况下输出 True，但在多线程环境可能有问题
+    # # 使用示例
+    # s1 = Singleton()
+    # s2 = Singleton()
+    # print(s1 is s2)  # 正常情况下输出 True，但在多线程环境可能有问题
+
+    a = Number(12)
+    print(a)
+    b = Number(1)
+    print(b)
