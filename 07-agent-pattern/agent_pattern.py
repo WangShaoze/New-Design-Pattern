@@ -87,7 +87,7 @@ if __name__ == '__main__':
     # print(subject.get_content())
 
     p = ProtectedProxy("test.txt")
-    print(p.get_content())
+    # print(p.get_content())
 
     u = User("uid1", "wang_shao")
     p.login(u)
